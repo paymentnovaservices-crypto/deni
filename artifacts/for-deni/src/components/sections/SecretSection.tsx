@@ -62,13 +62,11 @@ export default function SecretSection({ isOpen, onClose }: SecretSectionProps) {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ 
                     opacity: opacity, 
-                    y: 0,
-                    x: [0, Math.random() * 20 - 10, 0],
-                    y: [0, Math.random() * 20 - 10, 0]
+                    y: [0, Math.random() * 20 - 10, 0],
+                    x: [0, Math.random() * 20 - 10, 0]
                   }}
                   transition={{ 
                     opacity: { duration: 2, delay: i * 0.2 },
-                    y: { duration: 2, delay: i * 0.2 },
                     x: { repeat: Infinity, duration: 10 + Math.random() * 10, ease: "easeInOut" },
                     y: { repeat: Infinity, duration: 10 + Math.random() * 10, ease: "easeInOut" }
                   }}
