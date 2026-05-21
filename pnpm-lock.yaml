@@ -69,9 +69,6 @@ catalogs:
     zod:
       specifier: ^3.25.76
       version: 3.25.76
-    canvas-confetti:
-      specifier: ^1.9.2
-      version: 1.9.2
 
 overrides:
   esbuild>@esbuild/darwin-arm64: '-'
