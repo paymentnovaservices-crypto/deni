@@ -1,0 +1,31 @@
+kind = "web"
+previewPath = "/"
+title = "For Deni"
+version = "1.0.0"
+id = "artifacts/for-deni"
+router = "path"
+
+[[integratedSkills]]
+name = "react-vite"
+version = "1.0.0"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 23940
+
+[services.development]
+run = "pnpm --filter @workspace/for-deni run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/for-deni", "run", "build" ]
+publicDir = "artifacts/for-deni/dist/public"
+serve = "static"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "23940"
+BASE_PATH = "/"
