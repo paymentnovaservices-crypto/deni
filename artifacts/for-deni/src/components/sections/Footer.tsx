@@ -9,9 +9,12 @@ export default function Footer() {
         <span className="text-white/40 group-hover:text-primary group-hover:drop-shadow-[0_0_10px_rgba(249,168,212,0.8)] transition-all duration-300">✦</span>
         <span className="text-white/60 font-serif">for deni.</span>
       </div>
-      
-      <p className="text-white/30 text-xs tracking-widest uppercase mb-6">
-        © 2025 — still thinking about you
+
+      <p className="text-white/30 text-xs tracking-widest uppercase mb-2">
+        © 2026 — de pe 3 mai 2026
+      </p>
+      <p className="text-white/20 text-xs tracking-widest uppercase mb-6">
+        piatra neamț → brașov · still thinking about you
       </p>
 
       <Moon size={16} className="text-white/20" />

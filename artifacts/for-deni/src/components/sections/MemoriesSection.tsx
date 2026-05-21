@@ -1,99 +1,121 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Star, Heart, Moon, Camera, Image, Sparkles, Sun, Coffee, X } from 'lucide-react';
+import { X } from 'lucide-react';
+
+import img1 from '@assets/Screenshot_20260517_190806_Instagram_1779352024463.jpg';
+import img2 from '@assets/Screenshot_20260516_222011_Instagram_1779352024493.jpg';
+import img3 from '@assets/Screenshot_20260521_112336_WhatsApp_1779352024518.jpg';
+import img4 from '@assets/Screenshot_20260521_112420_WhatsApp_1779352024541.jpg';
+import img5 from '@assets/Screenshot_20260513_171803_Discord_1779352024559.jpg';
+import img6 from '@assets/Screenshot_20260512_180637_Instagram_1779352024574.jpg';
+import img7 from '@assets/Screenshot_20260511_204656_WhatsApp_1779352024590.jpg';
+import img8 from '@assets/Screenshot_20260508_181013_WhatsApp_1779352024605.jpg';
+import img9 from '@assets/Screenshot_20260508_115008_Instagram_1779352024618.jpg';
+import img10 from '@assets/Screenshot_20260507_221038_WhatsApp_1779352024641.jpg';
+import img11 from '@assets/Screenshot_20260507_114851_Instagram_1779352024656.jpg';
 
 const MEMORIES = [
-  { caption: "still one of my favorite moments", icon: Star, color: "from-pink-900/40 to-purple-900/40" },
-  { caption: "you looked way too cute here", icon: Camera, color: "from-amber-900/40 to-red-900/40" },
-  { caption: "i still smile at this", icon: SmileIcon, color: "from-rose-900/40 to-pink-900/40" },
-  { caption: "how are you even real", icon: Sparkles, color: "from-indigo-900/40 to-purple-900/40" },
-  { caption: "favorite girl ever", icon: Heart, color: "from-fuchsia-900/40 to-rose-900/40" },
-  { caption: "this picture owns my heart", icon: Image, color: "from-orange-900/40 to-amber-900/40" },
-  { caption: "still obsessed with this", icon: Moon, color: "from-blue-900/40 to-indigo-900/40" },
-  { caption: "pretty girl alert", icon: Sun, color: "from-yellow-900/40 to-orange-900/40" }
+  { src: img1,  caption: "asta e singura ta reacție? 😢 — you looked way too cute here",        tall: true  },
+  { src: img6,  caption: "realizezi ca ești prima persoană care să facă așa ceva? 😢",          tall: false },
+  { src: img2,  caption: "Still such a beauty. too late to deny it.",                            tall: false },
+  { src: img3,  caption: "când te aperi de ea și ea îți trimite asta 🥺",                        tall: true  },
+  { src: img10, caption: "stai că mi se întinde rimelul 😭 — favorite moment",                  tall: false },
+  { src: img4,  caption: "Te scot la un matcha când mai vin? — chill im easy 😇",               tall: false },
+  { src: img7,  caption: "still ramai my cutie, oricât de ametită ești",                        tall: false },
+  { src: img5,  caption: "Cutieeeee <3 reacted ❤️ — notificația care mi-a făcut ziua",         tall: false },
+  { src: img8,  caption: "ur a princess. BA NUUUU. da.",                                        tall: true  },
+  { src: img11, caption: "miss u :< — conversațiile mele preferate",                            tall: false },
+  { src: img9,  caption: "densuq.qx viewed your profile 👀 — săptămâna bună",                  tall: false },
 ];
 
-function SmileIcon(props: any) {
-  return <Heart {...props} />; // Placeholder
-}
-
 export default function MemoriesSection() {
-  const [selectedImage, setSelectedImage] = useState<typeof MEMORIES[0] | null>(null);
+  const [selected, setSelected] = useState<typeof MEMORIES[0] | null>(null);
 
   return (
-    <section className="w-full py-32 flex flex-col items-center">
+    <section className="w-full py-32 flex flex-col items-center px-4">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="mb-16 text-center"
+        className="mb-4 text-center"
       >
         <h2 className="text-3xl font-serif text-white/90">little memories</h2>
-        <p className="text-white/40 mt-2 text-sm uppercase tracking-widest">click to view</p>
+        <p className="text-white/40 mt-2 text-xs uppercase tracking-widest">de pe 3 mai 2026 · click to view</p>
       </motion.div>
 
-      <div className="columns-1 sm:columns-2 md:columns-3 gap-6 w-full max-w-5xl space-y-6">
-        {MEMORIES.map((memory, index) => {
-          const Icon = memory.icon;
-          const isTall = index % 3 === 0;
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ delay: 0.3 }}
+        className="text-white/30 italic text-sm mb-12 font-serif"
+      >
+        "every screenshot is a memory i keep coming back to"
+      </motion.p>
 
-          return (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-50px" }}
-              transition={{ duration: 0.6, delay: (index % 3) * 0.1 }}
-              whileHover={{ scale: 1.02 }}
-              onClick={() => setSelectedImage(memory)}
-              className={`relative break-inside-avoid rounded-3xl overflow-hidden cursor-none group ${isTall ? 'h-80' : 'h-64'}`}
-            >
-              <div className={`absolute inset-0 bg-gradient-to-br ${memory.color} transition-all duration-500 group-hover:scale-110`} />
-              
-              {/* Pattern Overlay */}
-              <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxyZWN0IHdpZHRoPSI4IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]" />
-              
-              <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                <Icon size={32} className="text-white/50 mb-4 drop-shadow-md group-hover:text-white transition-colors" />
-                <p className="text-white/90 font-serif text-lg leading-snug drop-shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 translate-y-4 group-hover:translate-y-0">
-                  {memory.caption}
-                </p>
-              </div>
-            </motion.div>
-          );
-        })}
+      <div className="columns-2 md:columns-3 gap-3 w-full max-w-5xl space-y-3">
+        {MEMORIES.map((memory, index) => (
+          <motion.div
+            key={index}
+            data-testid={`memory-card-${index}`}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: '-50px' }}
+            transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+            whileHover={{ scale: 1.02 }}
+            onClick={() => setSelected(memory)}
+            className={`relative break-inside-avoid rounded-2xl overflow-hidden cursor-none group ${memory.tall ? 'h-80' : 'h-56'}`}
+          >
+            <img
+              src={memory.src}
+              alt={memory.caption}
+              className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+            <div className="absolute bottom-0 left-0 right-0 p-3 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+              <p className="text-white text-xs font-serif leading-snug drop-shadow-lg">
+                {memory.caption}
+              </p>
+            </div>
+            {/* subtle pink glow border on hover */}
+            <div className="absolute inset-0 rounded-2xl ring-0 group-hover:ring-1 ring-pink-400/30 transition-all duration-300" />
+          </motion.div>
+        ))}
       </div>
 
       {/* Fullscreen Modal */}
       <AnimatePresence>
-        {selectedImage && (
+        {selected && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl"
-            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/90 backdrop-blur-xl"
+            onClick={() => setSelected(null)}
           >
-            <button 
-              className="absolute top-6 right-6 p-2 text-white/50 hover:text-white rounded-full bg-white/10 hover:bg-white/20 transition-colors"
-              onClick={() => setSelectedImage(null)}
+            <button
+              data-testid="memory-modal-close"
+              className="absolute top-6 right-6 p-2 text-white/50 hover:text-white rounded-full bg-white/10 hover:bg-white/20 transition-colors z-10"
+              onClick={() => setSelected(null)}
             >
               <X size={24} />
             </button>
 
             <motion.div
-              initial={{ scale: 0.9, y: 20 }}
+              initial={{ scale: 0.85, y: 20 }}
               animate={{ scale: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className={`w-full max-w-2xl aspect-[4/5] md:aspect-video rounded-[3rem] bg-gradient-to-br ${selectedImage.color} relative overflow-hidden flex flex-col items-center justify-center shadow-[0_0_50px_rgba(0,0,0,0.5)] border border-white/10`}
+              exit={{ scale: 0.85, opacity: 0 }}
+              className="relative max-w-sm w-full max-h-[85vh] rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(249,168,212,0.15)] border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
-              <div className="absolute inset-0 opacity-10 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPjxyZWN0IHdpZHRoPSI4IiBoZWlnaHQ9IjgiIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==')]" />
-              
-              <selectedImage.icon size={80} className="text-white/40 mb-8 drop-shadow-2xl" />
-              <h3 className="text-3xl md:text-4xl font-serif text-white text-center px-8 drop-shadow-xl font-medium">
-                {selectedImage.caption}
-              </h3>
+              <img
+                src={selected.src}
+                alt={selected.caption}
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/90 to-transparent">
+                <p className="text-white font-serif text-lg leading-snug">{selected.caption}</p>
+              </div>
             </motion.div>
           </motion.div>
         )}
