@@ -41,7 +41,7 @@ const frontendDistPath = path.join(__dirname, "../../for-deni/dist");
 app.use(express.static(frontendDistPath));
 
 // Fallback to index.html for React Router
-app.get("*", (req, res) => {
+app.get(/.*/, (req, res) => {
   res.sendFile(path.join(frontendDistPath, "index.html"));
 });
 
