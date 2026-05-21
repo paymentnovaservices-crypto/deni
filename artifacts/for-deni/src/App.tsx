@@ -1,9 +1,7 @@
 import React from "react";
-import { Switch, Route, Router as WouterRouter } from "wouter";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/not-found";
 
 import LoadingScreen from "@/components/LoadingScreen";
 import CustomCursor from "@/components/CustomCursor";
@@ -55,22 +53,34 @@ function MainSite() {
   );
 }
 
-function Router() {
-  return (
-    <Switch>
-      <Route path="/" component={MainSite} />
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
-
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <WouterRouter base={import.meta.env.BASE_URL.replace(/\/$/, "")}>
-          <Router />
-        </WouterRouter>
+        <div className="min-h-screen bg-background relative text-foreground">
+          <StarField />
+          <CustomCursor />
+          <NotificationPopup />
+          <StatusPill />
+          <FloatingHeart />
+          <SoundToggle />
+
+          <LoadingScreen />
+
+          <main className="relative z-10 w-full max-w-4xl mx-auto px-4 md:px-8 pt-20 pb-32 flex flex-col items-center">
+            <Hero />
+            <ClockSection />
+            <MusicPlayer />
+            <LetterSection />
+            <AdoreSection />
+            <MemoriesSection />
+            <ChatSection />
+            <TimelineSection />
+            <FinalSection />
+          </main>
+
+          <Footer />
+        </div>
         <Toaster />
       </TooltipProvider>
     </QueryClientProvider>
