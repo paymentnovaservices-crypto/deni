@@ -18,7 +18,11 @@ Acest repository folosește `pnpm` și este organizat ca un workspace cu mai mul
    ```bash
    pnpm --filter @workspace/for-deni run build
    ```
-3. Dacă vrei să previzualizezi build-ul local:
+3. Rulează frontend-ul local în modul de dezvoltare:
+   ```bash
+   pnpm --filter @workspace/for-deni run dev
+   ```
+4. Dacă vrei să previzualizezi build-ul local:
    ```bash
    pnpm --filter @workspace/for-deni run serve
    ```
