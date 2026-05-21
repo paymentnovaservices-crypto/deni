@@ -1,0 +1,7 @@
+services:
+  - type: static
+    name: deni-frontend
+    env: static
+    branch: main
+    buildCommand: pnpm --filter @workspace/for-deni run build
+    publishPath: artifacts/for-deni/dist/public
